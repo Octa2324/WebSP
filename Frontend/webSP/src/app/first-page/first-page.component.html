@@ -12,3 +12,22 @@
     </div>
   </nav>
 </body>
+
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>First name</th>
+        <th>Last name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let account of accounts">
+        <td>{{ account.email }}</td>
+        <td>{{ account.firstName }}</td>
+        <td>{{ account.lastName }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
