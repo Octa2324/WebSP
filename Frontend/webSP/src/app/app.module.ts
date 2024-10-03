@@ -7,13 +7,15 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TestPageComponent } from './skyShooter-page/test-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     FirstPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    TestPageComponent
   ],
   imports: [
     BrowserModule,
