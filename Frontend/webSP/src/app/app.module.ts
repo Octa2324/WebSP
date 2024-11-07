@@ -8,6 +8,7 @@ import { FirstPageComponent } from './first-page/first-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TestPageComponent } from './skyShooter-page/test-page.component';
+import { HalloweenShooterPageComponent } from './halloween-shooter-page/halloween-shooter-page.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TestPageComponent } from './skyShooter-page/test-page.component';
     LoginPageComponent,
     FirstPageComponent,
     RegisterPageComponent,
-    TestPageComponent
+    TestPageComponent,
+    HalloweenShooterPageComponent
   ],
   imports: [
     BrowserModule,
