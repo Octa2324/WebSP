@@ -8,23 +8,6 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './first-page.component.html',
   styleUrl: './first-page.component.css'
 })
-export class FirstPageComponent implements OnInit{
-  accounts: Account[] = [];
-  
-  constructor(private accountService: AccountService){}
+export class FirstPageComponent {
 
-  ngOnInit(): void {
-    this.getAccounts();
-  }
-
-  public getAccounts(): void{
-    this.accountService.getAccounts().subscribe(
-      (response: Account[]) =>{
-        this.accounts = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    )
-  }
 }

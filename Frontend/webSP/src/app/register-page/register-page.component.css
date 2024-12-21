@@ -1,60 +1,110 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; 
+    overflow: hidden; 
+}
+
 body {
+    background-color: #191414;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    height: 100%;
+    background-color: #ffffff00;
+    overflow: hidden;
 }
-.container {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+
+.login-box {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
     width: 100%;
+    max-width: 400px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    overflow: hidden; 
+    margin-top: 100px;
 }
-h2 {
-    margin-bottom: 1rem;
-    color: #333;
-}
-.form-group {
-    margin-bottom: 1rem;
-}
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #555;
-}
-.form-group input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-.form-group input[type="submit"] {
-    background-color: #5cb85c;
+
+.login-box h1 {
     color: #fff;
+    margin-bottom: 20px;
+    font-size: 24px; 
+}
+
+.textbox {
+    margin-bottom: 15px;
+}
+
+.textbox input {
+    width: 100%;
+    padding: 12px;
     border: none;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+    font-size: 16px;
+}
+
+.textbox input:focus {
+    outline: none;
+    background-color: #555;
+}
+
+/* Button styles */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1db954;
+    color: #fff;
+    font-size: 16px;
     cursor: pointer;
-    font-size: 1rem;
 }
-.form-group input[type="submit"]:hover {
-    background-color: #4cae4c;
+
+.btn:hover {
+    background-color: #1ed760;
 }
-.form-group input[type="password"] {
-    font-family: Arial, sans-serif;
+
+.form-group {
+    margin-top: 20px;
+    color: #fff;
 }
-.form-group p {
-    margin-top: 1rem;
-    color: #555;
-}
+
 .form-group a {
-    color: #007bff;
-    text-decoration: none;
+    color: #1db954; 
+    text-decoration: none; 
 }
+
 .form-group a:hover {
-    text-decoration: underline;
+    color: #1ed760; 
+}
+
+
+@media (max-width: 600px) {
+    .login-box {
+        padding: 20px;
+        width: 90%; 
+    }
+
+    .login-box h1 {
+        font-size: 20px; 
+    }
+
+    .textbox input {
+        padding: 10px; 
+    }
+
+    .btn {
+        padding: 10px; 
+    }
 }

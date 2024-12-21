@@ -9,6 +9,13 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TestPageComponent } from './skyShooter-page/test-page.component';
 import { HalloweenShooterPageComponent } from './halloween-shooter-page/halloween-shooter-page.component';
+import { AccountPageComponent } from './account-page/account-page.component';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AuthGuard } from './Services/auth-guard';
+
+
 
 @NgModule({
   declarations: [
@@ -17,14 +24,18 @@ import { HalloweenShooterPageComponent } from './halloween-shooter-page/hallowee
     FirstPageComponent,
     RegisterPageComponent,
     TestPageComponent,
-    HalloweenShooterPageComponent
+    HalloweenShooterPageComponent,
+    AccountPageComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot([], { useHash: true })
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

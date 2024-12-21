@@ -1,13 +1,20 @@
-
 <body>
-    <nav class="navbar">
-      <div class="container">
-        <a href="/" class="logo">Suc gama best</a>
-        <ul class="nav-links">
-          <li><a href="/login-page">Login</a></li>
-          <li><a href="/register-page">Register</a></li>
-        </ul>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo-container">
+        <a routerLink="/first-page"><img src="assets/logolitz.png" alt="Giocuri Logo" class="logo-img"></a>
+        <span class="logo-title">Giocuri</span>
       </div>
-    </nav>
+      <ul class="nav-links">
+        <li *ngIf="!isLoggedIn"><a routerLink="/login-page">Login</a></li>
+        <li *ngIf="!isLoggedIn"><a routerLink="/register-page">Register</a></li>
+        <li *ngIf="isLoggedIn" class="user-info">
+          <img [src]="userPicture" alt="User Picture" class="user-img" />
+          <a class="user-name" (click)="navigateToAccount()">{{ userName }}</a>
+          <button (click)="logout()" class="logout-btn">Logout</button>
+        </li>        
+      </ul>      
+    </div>
+  </nav>
 </body>
 <router-outlet></router-outlet>

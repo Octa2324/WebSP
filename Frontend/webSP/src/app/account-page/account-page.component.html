@@ -1,0 +1,17 @@
+<div class="container">
+  <div *ngIf="!accountDetails">
+    <p>Loading account details...</p>
+  </div>
+
+  <div class="account-box" *ngIf="accountDetails">
+    <h1>Account Information</h1>
+    <div class="profile-info">
+      <img src="https://cataas.com/cat" alt="Profile Photo" class="profile-photo" />
+      <div class="user-details">
+        <p><strong>Name:</strong> {{ accountDetails.firstName }} {{ accountDetails.lastName }}</p>
+        <p><strong>Email:</strong> {{ accountDetails.email }}</p>
+      </div>
+    </div>
+    <button class="btn" (click)="logout()">Logout</button>
+  </div>
+</div>
