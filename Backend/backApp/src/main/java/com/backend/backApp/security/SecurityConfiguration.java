@@ -33,6 +33,7 @@ public class SecurityConfiguration {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> {
+
                     authorize.requestMatchers("/login").permitAll();
 
                     authorize.requestMatchers("/createnewaccount").permitAll();
@@ -41,6 +42,7 @@ public class SecurityConfiguration {
 
 
                     authorize.anyRequest().authenticated();
+
 
                 })
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)

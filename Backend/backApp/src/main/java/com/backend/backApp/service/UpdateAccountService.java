@@ -7,6 +7,7 @@ import com.backend.backApp.models.UpdateAccountCommand;
 import com.backend.backApp.repository.AccountRepository;
 import com.backend.backApp.validators.AccountValidator;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -16,8 +17,12 @@ public class UpdateAccountService implements Command<UpdateAccountCommand, Accou
 
     private AccountRepository accountRepository;
 
-    public UpdateAccountService(AccountRepository accountRepository) {
+    private final PasswordEncoder encoder;
+
+
+    public UpdateAccountService(AccountRepository accountRepository, PasswordEncoder encoder) {
         this.accountRepository = accountRepository;
+        this.encoder = encoder;
     }
 
     @Override
@@ -26,6 +31,11 @@ public class UpdateAccountService implements Command<UpdateAccountCommand, Accou
         if(accountOptional.isPresent()){
             Account account = command.getAccount();
             account.setId(command.getId());
+
+            if (account.getPassword() != null && !account.getPassword().isBlank()) {
+                account.setPassword(encoder.encode(account.getPassword()));
+            }
+
             AccountValidator.executeUpdate(account);
             accountRepository.save(account);
             return ResponseEntity.ok(new AccountDTO(account));

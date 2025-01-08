@@ -21,16 +21,11 @@ public class Account {
     private String lastName;
     @Column
     private String password;
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "account_roles", joinColumns = @JoinColumn(name = "account_id"))
-    @Column(name = "role")
-    private Set<String> roles;
 
-    public Account(String email, String firstName, String lastName, String password, Set<String> roles) {
+    public Account(String email, String firstName, String lastName, String password) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
-        this.roles = roles;
     }
 }

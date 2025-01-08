@@ -8,6 +8,7 @@ import { HalloweenShooterPageComponent } from './halloween-shooter-page/hallowee
 import { AccountPageComponent } from './account-page/account-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AuthGuard } from './Services/auth-guard';
+import { HoopsPageComponent } from './hoops-page/hoops-page.component';
 
 const routes: Routes = [
   { path: 'first-page', component: FirstPageComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'register-page', component: RegisterPageComponent },
   { path: 'test-page', component: TestPageComponent },
   { path: 'halloween-page', component: HalloweenShooterPageComponent },
+  { path: 'hoops-page', component: HoopsPageComponent},
   { 
     path: 'account-page', 
     component: AccountPageComponent, 

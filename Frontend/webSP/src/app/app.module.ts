@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AuthGuard } from './Services/auth-guard';
+import { HoopsPageComponent } from './hoops-page/hoops-page.component';
 
 
 
@@ -26,7 +27,8 @@ import { AuthGuard } from './Services/auth-guard';
     TestPageComponent,
     HalloweenShooterPageComponent,
     AccountPageComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    HoopsPageComponent
   ],
   imports: [
     BrowserModule,

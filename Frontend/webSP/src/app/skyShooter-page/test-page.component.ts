@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-test-page',
   templateUrl: './test-page.component.html',
-  styleUrl: './test-page.component.css'
+  styleUrls: ['./test-page.component.css']
 })
-export class TestPageComponent implements OnInit{
+export class TestPageComponent implements OnInit, OnDestroy {
+  private unityInstance: any;
+
   ngOnInit(): void {
     this.loadUnityGame();
   }
@@ -35,7 +37,8 @@ export class TestPageComponent implements OnInit{
           const progressBarFull = document.querySelector('#unity-progress-bar-full') as HTMLElement;
           if (progressBarFull) progressBarFull.style.width = `${100 * progress}%`;
         }
-      ).then((unityInstance: { SetFullscreen: (arg0: number) => void; }) => {
+      ).then((unityInstance: { SetFullscreen: (arg0: number) => void; Quit: () => void; }) => {
+        this.unityInstance = unityInstance;
         const fullscreenButton = document.querySelector('#unity-fullscreen-button');
         if (fullscreenButton) {
           fullscreenButton.addEventListener('click', () => {
@@ -47,5 +50,11 @@ export class TestPageComponent implements OnInit{
       });
     };
     document.body.appendChild(script);
+  }
+
+  ngOnDestroy(): void {
+    if (this.unityInstance) {
+      this.unityInstance.Quit(); 
+    }
   }
 }

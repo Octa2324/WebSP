@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Set;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -31,16 +30,12 @@ public class CreateNewAccountController {
     @PostMapping("/createnewaccount")
     public ResponseEntity<AccountDTO> createNewAccount(@RequestBody Account account) {
         AccountValidator.execute(account);
-        if (account.getRoles() == null || account.getRoles().isEmpty()) {
-            account.setRoles(Set.of("basicuser"));
-        }
         Account savedAccount = accountRepository.save(
                 new Account(
                         account.getEmail(),
                         account.getFirstName(),
                         account.getLastName(),
-                        encoder.encode(account.getPassword()),
-                        account.getRoles()
+                        encoder.encode(account.getPassword())
                 )
         );
         return ResponseEntity.status(HttpStatus.CREATED).body(new AccountDTO(savedAccount));

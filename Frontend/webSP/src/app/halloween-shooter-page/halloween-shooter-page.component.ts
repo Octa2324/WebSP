@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-halloween-shooter-page',
   templateUrl: './halloween-shooter-page.component.html',
-  styleUrl: './halloween-shooter-page.component.css'
+  styleUrls: ['./halloween-shooter-page.component.css']
 })
-export class HalloweenShooterPageComponent implements OnInit{
+export class HalloweenShooterPageComponent implements OnInit, OnDestroy {
+  private unityInstance: any;
+
   ngOnInit(): void {
     this.loadUnityGame();
   }
@@ -15,7 +17,7 @@ export class HalloweenShooterPageComponent implements OnInit{
     const loaderUrl = `${buildUrl}/waveSh build.loader.js`;
 
     const config = {
-      dataUrl: `${buildUrl}/waveSh build.data.br`,
+      //dataUrl: `${buildUrl}/waveSh build.data.br`,
       frameworkUrl: `${buildUrl}/waveSh build.framework.js.br`,
       codeUrl: `${buildUrl}/waveSh build.wasm.br`,
       streamingAssetsUrl: 'StreamingAssets',
@@ -35,7 +37,8 @@ export class HalloweenShooterPageComponent implements OnInit{
           const progressBarFull = document.querySelector('#unity-progress-bar-full') as HTMLElement;
           if (progressBarFull) progressBarFull.style.width = `${100 * progress}%`;
         }
-      ).then((unityInstance: { SetFullscreen: (arg0: number) => void; }) => {
+      ).then((unityInstance: { SetFullscreen: (arg0: number) => void; Quit: () => void; }) => {
+        this.unityInstance = unityInstance; 
         const fullscreenButton = document.querySelector('#unity-fullscreen-button');
         if (fullscreenButton) {
           fullscreenButton.addEventListener('click', () => {
@@ -47,5 +50,11 @@ export class HalloweenShooterPageComponent implements OnInit{
       });
     };
     document.body.appendChild(script);
+  }
+
+  ngOnDestroy(): void {
+    if (this.unityInstance) {
+      this.unityInstance.Quit(); 
+    }
   }
 }

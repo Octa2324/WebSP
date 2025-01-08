@@ -26,14 +26,8 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException(ErrorMessages.USERNAME_NOT_FOUND.getMessage());
         }
 
-        var authorities = account.getRoles()
-                .stream()
-                .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
-                .toList();
-
         return User.withUsername(account.getEmail())
                 .password(account.getPassword())
-                .authorities(authorities)
                 .build();
     }
 }
