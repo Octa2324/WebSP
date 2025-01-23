@@ -4,6 +4,7 @@ import com.backend.backApp.security.jwt.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -32,19 +33,18 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
+                .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(authorize -> {
 
                     authorize.requestMatchers("/login").permitAll();
 
                     authorize.requestMatchers("/createnewaccount").permitAll();
 
-                    authorize.requestMatchers("/account/email/**").permitAll();
+                   /* authorize.requestMatchers("/account/email/**").permitAll();
 
                     authorize.requestMatchers("/accounts").permitAll();
 
-                   // authorize.requestMatchers("/account/**").permitAll();
-
-                    authorize.requestMatchers("/account/**").permitAll();
+                    authorize.requestMatchers("/account/**").permitAll(); */
 
 
                     authorize.anyRequest().authenticated();
