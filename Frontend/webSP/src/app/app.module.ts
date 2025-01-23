@@ -15,6 +15,10 @@ import { RouterModule } from '@angular/router';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AuthGuard } from './Services/auth-guard';
 import { HoopsPageComponent } from './hoops-page/hoops-page.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+
+
+
 
 
 
@@ -28,14 +32,16 @@ import { HoopsPageComponent } from './hoops-page/hoops-page.component';
     HalloweenShooterPageComponent,
     AccountPageComponent,
     AdminPageComponent,
-    HoopsPageComponent
+    HoopsPageComponent,
+    ProfilePageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule,  
     RouterModule.forRoot([], { useHash: true })
+
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

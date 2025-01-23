@@ -21,7 +21,6 @@ export class RegisterPageComponent {
     firstName: '',
     lastName: '',
     password: '',
-    roles: ['basicuser']
   };
   
   errorMessage: string = '';
@@ -64,8 +63,8 @@ export class RegisterPageComponent {
 
     this.authService.login(loginData).subscribe({
       next: (response) => {
-        localStorage.setItem('token', response);
-        localStorage.setItem('email', this.account.email);
+        sessionStorage.setItem('token', response);
+        sessionStorage.setItem('email', this.account.email);
         this.router.navigate(['/account-page']);
       },
       error: (error) => {

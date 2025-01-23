@@ -40,6 +40,12 @@ public class SecurityConfiguration {
 
                     authorize.requestMatchers("/account/email/**").permitAll();
 
+                    authorize.requestMatchers("/accounts").permitAll();
+
+                   // authorize.requestMatchers("/account/**").permitAll();
+
+                    authorize.requestMatchers("/account/**").permitAll();
+
 
                     authorize.anyRequest().authenticated();
 

@@ -1,0 +1,17 @@
+<div class="container" *ngIf="accountDetails">
+    <div class="profile-box">
+      <h1>{{ accountDetails.firstName }}'s Profile</h1>
+      <div class="profile-info">
+        <img src="https://http.cat/100" alt="Profile Photo" class="profile-photo" />
+        <div class="user-details">
+          <p><strong>First Name:</strong> {{ accountDetails.firstName }}</p>
+          <p><strong>Last Name:</strong> {{ accountDetails.lastName }}</p>
+        </div>
+      </div>
+      <div class="action-buttons" *ngIf="!isOwnProfile">
+        <button *ngIf="!isFriend" class="btn" (click)="addFriend()">Send Friend Request</button>
+        <button *ngIf="isFriend" class="btn" (click)="deleteFriend()">Delete Friend</button>
+        <button class="btn">Send Message</button>
+      </div>
+    </div>
+  </div>

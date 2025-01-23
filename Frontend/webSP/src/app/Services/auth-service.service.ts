@@ -12,16 +12,23 @@ export class AuthServiceService {
   public tokenSubject = new BehaviorSubject<string | null>(null); 
 
   constructor(private http: HttpClient, private router: Router) {
-    const token = localStorage.getItem('token');
+    window.addEventListener('storage', this.syncAuth.bind(this));
+    const token = sessionStorage.getItem('token');
     if (token) {
-      this.tokenSubject.next(token); 
+      this.tokenSubject.next(token);
+    }
+  }
+  
+  private syncAuth(event: StorageEvent): void {
+    if (event.key === 'token') {
+      this.tokenSubject.next(event.newValue);
     }
   }
   
 
   private clearAuthData(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('email');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('email');
     this.tokenSubject.next(null);
   }
 
@@ -29,8 +36,8 @@ export class AuthServiceService {
     return this.http.post<any>(`${this.apiUrl}/login`, credentials, { responseType: 'text' as 'json' })
       .pipe(
         tap(token => {
-          localStorage.setItem('token', token);
-          localStorage.setItem('email', credentials.email);
+          sessionStorage.setItem('token', token);
+          sessionStorage.setItem('email', credentials.email);
           this.tokenSubject.next(token);
         })
       );

@@ -10,6 +10,9 @@ import { AuthServiceService } from '../Services/auth-service.service';
 })
 export class AccountPageComponent implements OnInit {
   accountDetails: any;
+  accounts: any;
+
+  accountFriends: any;
 
   constructor(
     private accountService: AccountService,
@@ -22,7 +25,7 @@ export class AccountPageComponent implements OnInit {
   ngOnInit(): void {
     console.log('AccountPageComponent - ngOnInit started');
     console.log('Is Logged In:', this.authService.isLoggedIn());
-    console.log('Stored Email:', localStorage.getItem('email'));
+    console.log('Stored Email:', sessionStorage.getItem('email'));
 
     if (!this.authService.isLoggedIn()) {
       console.log('Not logged in, redirecting to login page');
@@ -30,10 +33,12 @@ export class AccountPageComponent implements OnInit {
       return;
     }
 
-    const email = localStorage.getItem('email');
+    const email = sessionStorage.getItem('email');
     if (email) {
       console.log('Fetching account details for:', email);
       this.getAccountDetails(email);
+      this.getAllAccounts();
+      this.getAccountFriends(email);
     } else {
       console.log('No email found, logging out');
       this.authService.logout();
@@ -51,6 +56,30 @@ export class AccountPageComponent implements OnInit {
         this.authService.logout();
       }
     });
+  }
+
+  getAllAccounts(): void {
+    this.accountService.getAllAccounts().subscribe({
+      next: (data) => {
+        console.log('Accounts displayed now: ', data);
+        this.accounts = data;
+      },
+      error: (error) => {
+        console.error('Error fetching accounts: ', error);
+      }
+    });
+  }
+
+  getAccountFriends(email: string): void {
+    this.accountService.getAccountFriends(email).subscribe({
+      next: (data) =>{
+        console.log('Account friends displayed now: ', data);
+        this.accountFriends = data;
+      },
+      error: (error) => {
+        console.error('Error getting account friends: ', error);
+      }
+    })
   }
 
   logout(): void {

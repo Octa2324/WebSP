@@ -4,7 +4,6 @@ export interface Account {
   firstName: string;
   lastName: string;
   password: string;
-  roles?: string[];
 }
 
 export interface AccountDTO {
@@ -12,5 +11,4 @@ export interface AccountDTO {
   email: string;
   firstName: string;
   lastName: string;
-  roles: string[];
 }

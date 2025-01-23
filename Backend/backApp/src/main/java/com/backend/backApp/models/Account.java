@@ -3,7 +3,9 @@ package com.backend.backApp.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Set;
+
 
 @Table(name = "accounts")
 @Data
@@ -13,7 +15,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @Column
+    @Column(unique = true)
     private String email;
     @Column
     private String firstName;
@@ -21,6 +23,9 @@ public class Account {
     private String lastName;
     @Column
     private String password;
+    @OneToMany(mappedBy = "account1", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Friendship> friendships = new HashSet<>();
+
 
     public Account(String email, String firstName, String lastName, String password) {
         this.email = email;

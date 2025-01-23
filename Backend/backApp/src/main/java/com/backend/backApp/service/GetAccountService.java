@@ -34,4 +34,5 @@ public class GetAccountService implements Query<Integer, AccountDTO> {
         }
         throw new AccountNotFoundException();
     }
+
 }

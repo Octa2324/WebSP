@@ -2,6 +2,9 @@ package com.backend.backApp.models;
 
 import lombok.Data;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Data
 public class AccountDTO {
     private Integer id;
@@ -17,4 +20,5 @@ public class AccountDTO {
         this.firstName = account.getFirstName();
         this.lastName = account.getLastName();
     }
+
 }

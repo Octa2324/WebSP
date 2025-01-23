@@ -6,9 +6,9 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { TestPageComponent } from './skyShooter-page/test-page.component';
 import { HalloweenShooterPageComponent } from './halloween-shooter-page/halloween-shooter-page.component';
 import { AccountPageComponent } from './account-page/account-page.component';
-import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AuthGuard } from './Services/auth-guard';
 import { HoopsPageComponent } from './hoops-page/hoops-page.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 const routes: Routes = [
   { path: 'first-page', component: FirstPageComponent },
@@ -22,6 +22,11 @@ const routes: Routes = [
     path: 'account-page', 
     component: AccountPageComponent, 
     canActivate: [AuthGuard] 
+  },
+  {
+    path: 'profile-page/:email',
+    component: ProfilePageComponent,
+    canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: '/first-page' },
 ];

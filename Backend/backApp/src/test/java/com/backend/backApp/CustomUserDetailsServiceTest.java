@@ -30,7 +30,7 @@ public class CustomUserDetailsServiceTest {
 
     @Test
     public void load_user_by_username_when_user_exists(){
-        Account account = new Account("test@gmail.com", "Test", "User", "encodedPassword", Set.of("basicuser"));
+        Account account = new Account("test@gmail.com", "Test", "User", "encodedPassword");
 
         when(accountRepository.findByEmail("test@gmail.com")).thenReturn(account);
 

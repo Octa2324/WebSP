@@ -17,7 +17,7 @@ export class HalloweenShooterPageComponent implements OnInit, OnDestroy {
     const loaderUrl = `${buildUrl}/waveSh build.loader.js`;
 
     const config = {
-      //dataUrl: `${buildUrl}/waveSh build.data.br`,
+      dataUrl: `${buildUrl}/waveSh build.data.br`,
       frameworkUrl: `${buildUrl}/waveSh build.framework.js.br`,
       codeUrl: `${buildUrl}/waveSh build.wasm.br`,
       streamingAssetsUrl: 'StreamingAssets',

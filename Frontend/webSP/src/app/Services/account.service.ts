@@ -34,4 +34,17 @@ export class AccountService {
   deleteAccount(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/account/${id}`);
   }
+
+  getAccountFriends(email: string): Observable<AccountDTO[]>{
+    return this.http.get<AccountDTO[]>(`${this.apiUrl}/account/${email}/friends`);
+  }
+
+  addFriend(email1: string, email2: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/account/${email1}/friend/${email2}`, {});
+  }
+
+  removeFriend(email1: string, email2: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/account/${email1}/friend/${email2}`);
+  }
+  
 }

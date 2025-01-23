@@ -1,4 +1,3 @@
-// app.component.ts
 import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from './Services/auth-service.service';
 import { Router } from '@angular/router';
@@ -12,7 +11,7 @@ export class AppComponent implements OnInit {
   title = 'webSP';
   isLoggedIn = false;
   userName = 'Guest';
-  userPicture = 'https://cataas.com/cat';
+  userPicture = 'https://http.cat/200';
 
   constructor(private authService: AuthServiceService, private router: Router) {
   }
@@ -21,7 +20,8 @@ export class AppComponent implements OnInit {
     // Subscribe to token changes
     this.authService.tokenSubject.subscribe(token => {
       this.isLoggedIn = !!token;
-      this.userName = token ? localStorage.getItem('email') || 'Guest' : 'Guest';
+      this.userName = token ? sessionStorage.getItem('email') || 'Guest' : 'Guest';
+      this.userName = this.userName.slice(0,this.userName.indexOf("@"));
     });
   }
 

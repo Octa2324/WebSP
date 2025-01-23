@@ -19,19 +19,21 @@ public class AccountController {
     private final DeleteAccountService deleteAccountService;
     private final GetAccountService getAccountService;
     private final SearchAccountService searchAccountService;
+    private final AddAndDeleteFriendService addAndDeleteFriendService;
 
     public AccountController(CreateAccountService createAccountService,
                              GetAccountsService getAccountsService,
                              UpdateAccountService updateAccountService,
                              DeleteAccountService deleteAccountService,
                              GetAccountService getAccountService,
-                             SearchAccountService searchAccountService) {
+                             SearchAccountService searchAccountService, AddAndDeleteFriendService addAndDeleteFriendService) {
         this.createAccountService = createAccountService;
         this.getAccountsService = getAccountsService;
         this.updateAccountService = updateAccountService;
         this.deleteAccountService = deleteAccountService;
         this.getAccountService = getAccountService;
         this.searchAccountService = searchAccountService;
+        this.addAndDeleteFriendService = addAndDeleteFriendService;
     }
 
     @PostMapping("/account")
@@ -66,5 +68,22 @@ public class AccountController {
     public ResponseEntity<Void> deleteAccount(@PathVariable Integer id){
         return deleteAccountService.execute(id);
     }
+
+    @GetMapping("/account/{email}/friends")
+    public ResponseEntity<List<AccountDTO>> getAccountFriends(@PathVariable String email) {
+        return getAccountsService.getAccountFriends(email);
+    }
+
+    @PostMapping("/account/{email1}/friend/{email2}")
+    public ResponseEntity<String> addFriendByEmail(@PathVariable String email1, @PathVariable String email2) {
+        return addAndDeleteFriendService.addFriendByEmail(email1,email2);
+    }
+
+    @DeleteMapping("/account/{email1}/friend/{email2}")
+    public ResponseEntity<String> removeFriendByEmail(@PathVariable String email1, @PathVariable String email2) {
+        return addAndDeleteFriendService.removeFriendByEmail(email1, email2);
+    }
+
+
 
 }
