@@ -9,6 +9,8 @@ import { AccountPageComponent } from './account-page/account-page.component';
 import { AuthGuard } from './Services/auth-guard';
 import { HoopsPageComponent } from './hoops-page/hoops-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { HoopsPixelArtPageComponent } from './hoops-pixel-art-page/hoops-pixel-art-page.component';
+import { BaseBuiderPageComponent } from './base-buider-page/base-buider-page.component';
 
 const routes: Routes = [
   { path: 'first-page', component: FirstPageComponent },
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'test-page', component: TestPageComponent },
   { path: 'halloween-page', component: HalloweenShooterPageComponent },
   { path: 'hoops-page', component: HoopsPageComponent},
+  { path: 'hoopsPixel-page', component: HoopsPixelArtPageComponent},
+  { path: 'baseBuider-page', component: BaseBuiderPageComponent},
   { 
     path: 'account-page', 
     component: AccountPageComponent, 

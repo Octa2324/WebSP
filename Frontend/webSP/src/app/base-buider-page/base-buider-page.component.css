@@ -1,0 +1,50 @@
+
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  #unity-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: auto;
+    margin: auto;
+    padding: 0;
+    position: relative;
+    border: 1px solid #ccc; 
+  }
+  
+  canvas {
+    width: 100%;
+    height: auto;
+  }
+  
+  #unity-footer, #unity-progress-bar-empty, #unity-warning {
+    display: none; 
+  }
+  
+
+  #game-description {
+    margin-top: 20px; 
+    width: 50%; 
+    text-align: center; 
+  }
+  
+  #game-description h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #game-description p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  
+  

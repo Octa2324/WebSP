@@ -17,6 +17,8 @@ import { AuthGuard } from './Services/auth-guard';
 import { HoopsPageComponent } from './hoops-page/hoops-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { AuthInterceptor } from './Services/auth-interceptor';
+import { HoopsPixelArtPageComponent } from './hoops-pixel-art-page/hoops-pixel-art-page.component';
+import { BaseBuiderPageComponent } from './base-buider-page/base-buider-page.component';
 
 
 
@@ -35,6 +37,8 @@ import { AuthInterceptor } from './Services/auth-interceptor';
     AdminPageComponent,
     HoopsPageComponent,
     ProfilePageComponent,
+    HoopsPixelArtPageComponent,
+    BaseBuiderPageComponent,
   ],
   imports: [
     BrowserModule,
